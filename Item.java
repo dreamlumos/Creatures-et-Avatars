@@ -1,0 +1,38 @@
+public abstract class Item{
+	
+	private final String nom;
+	private int x, y;
+
+	public Item(String nom, int x, int y){
+
+		this.nom = nom;
+		this.x = x;
+		this.y = y;
+
+	}
+
+	public Item(String nom){
+
+		this(nom, -1, -1);
+
+	}
+
+	public int getX(){
+		return x;
+	}
+
+	public int getY(){
+		return y;
+	}
+
+	public String getNom(){
+		return nom;
+	}
+
+	public String toString(){
+		return nom+"("+x+","+y+")";
+	}
+
+	public int distance(Item item){ //distance de Manhattan
+		return Math.abs(x-item.x)+Math.abs(y-item.y);
+	}

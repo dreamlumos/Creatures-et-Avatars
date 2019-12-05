@@ -1,0 +1,21 @@
+LU2IN002 Introduction à la Programmation Orientée Objet
+
+Projet 2019 : "Créatures et avatars"
+
+Partie 1 - Les accessoires
+
+Q1 : 
+
+class Monde (tab de Items)
+
+abstract class Items
+
+abstract class Personnage extends Items
+class Avatar extends Personnage
+class Creature extends Personnage
+
+abstract class Acc extends Items
+class Pomme extends Acc implements Mangeable
+class Sac extends Acc
+
+Interface Mangeable
