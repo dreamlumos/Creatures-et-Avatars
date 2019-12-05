@@ -1,4 +1,4 @@
-public abstract class Acc extends Items{
+public abstract class Acc extends Item{
 	
 	
 }

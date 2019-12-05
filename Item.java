@@ -36,3 +36,5 @@ public abstract class Item{
 	public int distance(Item item){ //distance de Manhattan
 		return Math.abs(x-item.x)+Math.abs(y-item.y);
 	}
+
+}
