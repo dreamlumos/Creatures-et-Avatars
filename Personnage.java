@@ -22,6 +22,10 @@ public abstract class Personnage extends Item{
 
 	}
 
+	protected double getPoids(){
+		return poids;
+	}
+
 	protected void addPoids(double p){
 
 		if (p > 0){
