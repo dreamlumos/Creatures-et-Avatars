@@ -9,16 +9,22 @@ public abstract class Personnage extends Item{
 
 	}
 
-	public Personnage(String nom, int x, int y){
+	public Personnage(String nom, int x, int y){ //poids aléatoire
 
 		this(nom, Math.random()*100+30, x, y);
 
 	}
 
-	public Personnage(String nom){ //necessary?
-		
+	public Personnage(String nom, double poids){ //position aléatoire
+
 		super(nom);
-		this.poids = Math.random()*100+30;
+		this.poids = poids;
+
+	}
+
+	public Personnage(String nom){ //poids et position aléatoires
+		
+		this(nom, Math.random()*100+30);
 
 	}
 
@@ -35,7 +41,7 @@ public abstract class Personnage extends Item{
 	}
 
 	public String toString(){
-		return String.format("%s %.1fkg", nom, poids);
+		return String.format("%s %.1f kg", nom, poids);
 	}
 
 }
