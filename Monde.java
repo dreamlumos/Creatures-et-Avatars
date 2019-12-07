@@ -20,9 +20,10 @@ public class Monde{
 	}
 
 	public void ajouterItem(Item item){
-	/* Initialise aléatoirement l'absicce et l'ordonnée de l'item et ajoute l'item dans le monde. */
+	/* Initialise aléatoirement l'abcisse et l'ordonnée de l'item et ajoute l'item dans le monde. */
 
-	//TO DO
+		//??
+		listeItems.add(item);
 
 	}
 
