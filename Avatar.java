@@ -7,7 +7,7 @@ public class Avatar extends Personnage{
 	private ArrayList<Acc> listeAcc;
 	private Monde monde;
 
-	public Avatar(String nom, double poids, Moonde monde){
+	public Avatar(String nom, double poids, Monde monde){
 
 		super(nom, poids);
 
@@ -43,7 +43,7 @@ public class Avatar extends Personnage{
 	public void devenirAmi(Creature c){
 	/* Fait devenir ami l'avatar avec la créature en paramètre, s'il n'est pas déjà ami avec. */
 
-		if (estAmi){
+		if (estAmi(c)){
 			System.out.println(getNom()+" est déjà ami avec "+c.getNom());
 		} else {
 			
@@ -56,7 +56,7 @@ public class Avatar extends Personnage{
 
 	public void perdreAmi(Creature c){
 
-		if (estAmi){
+		if (estAmi(c)){
 
 			listeAmis.remove(c);
 
@@ -73,9 +73,9 @@ public class Avatar extends Personnage{
 	public void rencontrer(Creature c){
 	/* Lorsque l'avatar rencontre une créature, il lui offre le premier accessoire qu'il a dans listeAcc et la créature ajoute cet accessoire dans son sac. Si la créature n'est pas amie avec lui et si l'accessoire offert a un poids supérieur à 0.5 kg, alors la créature devient amie avec lui. S'il n'a pas d'accessoires à offrir et cette créature était une amie, alors il perd son amitié. */
 
-		if (listeAcc.size() == 0){
+		if (listeAcc.size() == 0){ //si l'avatar n'a pas d'accessoires
 
-			perdreAmi();
+			perdreAmi(c);
 
 		} else {
 
@@ -86,7 +86,7 @@ public class Avatar extends Personnage{
 			if (a.getPoids() > 0.5){
 
 				devenirAmi(c);
-				
+
 			}
 		}
 
@@ -157,7 +157,7 @@ public class Avatar extends Personnage{
 
 		listeAcc.add(a);
 
-		Sytem.out.println(getNom()+" ramasse "+a.getNom());
+		System.out.println(getNom()+" ramasse "+a.getNom());
 
 	}
 
@@ -169,9 +169,9 @@ public class Avatar extends Personnage{
 		for (Item i : listeVoisins){
 
 			if (i instanceof Acc){
-				ramasser(i);
+				ramasser((Acc) i);
 			} else if (i instanceof Creature){
-				rencontrer(i);
+				rencontrer((Creature) i);
 			} else if (i instanceof Avatar){
 				System.out.println(getNom()+" salue "+i.getNom());
 			}
@@ -194,7 +194,7 @@ public class Avatar extends Personnage{
 		do{
 
 			System.out.println("Entrer une abscisse entre [0,"+(monde.getTaille()-1)+"] : \n");
-			newX = sc.nextInt();
+			newX = scanner.nextInt();
 			System.out.println("\n");			
 		
 		} while (newX < 0 || newX >= monde.getTaille());
@@ -202,7 +202,7 @@ public class Avatar extends Personnage{
 		do{
 
 			System.out.println("Entrer une abscisse entre [0,"+(monde.getTaille()-1)+"] : \n");
-			newY = sc.nextInt();
+			newY = scanner.nextInt();
 			System.out.println("\n");
 		
 		} while (newY < 0 || newY >= monde.getTaille());

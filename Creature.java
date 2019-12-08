@@ -45,12 +45,20 @@ public class Creature extends Personnage{
 	public void manger(){ 
 	/* La créature mange les accessoires mangeables du sac ce qui augmente son poids. */
 
-		//FIX!!
+		Acc a;
 
-		for (Acc a : leSac){
+		for (int i=0; i<leSac.size(); i++){
+
+			a = leSac.obtenir(i);
 
 			if (a instanceof Mangeable){
-				manger(a);
+
+				manger((Mangeable) a);
+			
+			} else {
+				
+				leSac.ajouter(a);
+			
 			}
 
 		}

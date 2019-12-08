@@ -12,7 +12,7 @@ public class Noms{
 
 	}
 
-	public getNom(){
+	public String getNom(){
 
 		String nom = tabNoms[ptTab]+cptParcours;
 

@@ -26,7 +26,7 @@ public class Monde{
 	public void ajouterItem(Item item){
 	/* Initialise aléatoirement l'abcisse et l'ordonnée de l'item et ajoute l'item dans le monde. */
 
-		if (item.getX == -1 && item.getY == -1){
+		if (item.getX() == -1 && item.getY() == -1){
 
 
 			item.setX(getPositionAlea());
@@ -52,7 +52,7 @@ public class Monde{
 
 		for (Item i : listeItems){
 
-			if (i.getX == x && i.getY == y){
+			if (i.getX() == x && i.getY() == y){
 				return i;
 			}
 
@@ -126,7 +126,7 @@ public class Monde{
 
 			monde += i+" |";
 
-			for (int j=0; j<taille, j++){
+			for (int j=0; j<taille; j++){
 
 				Item item = chercher(i, j);
 
@@ -136,7 +136,7 @@ public class Monde{
 
 				} else {
 
-					monde += getNomCourt(item)+"|";
+					monde += getNomCourt(item.getNom())+"|";
 
 				}
 
@@ -146,7 +146,7 @@ public class Monde{
 
 		}
 
-		return monde;
+		System.out.println(monde);
 
 	}
 
