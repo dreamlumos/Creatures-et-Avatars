@@ -40,7 +40,7 @@ public abstract class Personnage extends Item{
 
 	}
 
-	public String toString(){
+	public String toString(){ //Not used
 		return String.format("%s %.1f kg", nom, poids);
 	}
 

@@ -42,8 +42,10 @@ public class Creature extends Personnage{
 	
 	}
 
-	public void manger(){ //FIX!!
+	public void manger(){ 
 	/* La créature mange les accessoires mangeables du sac ce qui augmente son poids. */
+
+		//FIX!!
 
 		for (Acc a : leSac){
 
