@@ -1,16 +1,21 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Avatar extends Personnage{
 	
 	private ArrayList<Creature> listeAmis;
 	private ArrayList<Acc> listeAcc;
+	private Monde monde;
 
-	public Avatar(String nom, double poids){
+	public Avatar(String nom, double poids, Moonde monde){
 
 		super(nom, poids);
 
 		listeAmis = new ArrayList<Creature>();
 		listeAcc = new ArrayList<Acc>();
+
+		this.monde = monde;
+		monde.ajouterItem((Item) this);
 
 	}
 
@@ -68,8 +73,22 @@ public class Avatar extends Personnage{
 	public void rencontrer(Creature c){
 	/* Lorsque l'avatar rencontre une créature, il lui offre le premier accessoire qu'il a dans listeAcc et la créature ajoute cet accessoire dans son sac. Si la créature n'est pas amie avec lui et si l'accessoire offert a un poids supérieur à 0.5 kg, alors la créature devient amie avec lui. S'il n'a pas d'accessoires à offrir et cette créature était une amie, alors il perd son amitié. */
 
-		//FIX!!
-		//c.addAcc();
+		if (listeAcc.size() == 0){
+
+			perdreAmi();
+
+		} else {
+
+			Acc a = listeAcc.get(0);
+			c.addAcc(a);
+			listeAcc.remove(0);
+
+			if (a.getPoids() > 0.5){
+
+				devenirAmi(c);
+				
+			}
+		}
 
 	}
 
@@ -128,6 +147,70 @@ public class Avatar extends Personnage{
 		}
 
 		return cpt;
+
+	}
+
+	public void ramasser(Acc a){
+	/* Supprime l'accessoire du monde et le met dans la liste d'accessoires de l'avatar. */
+
+		monde.supprimerItem(a);
+
+		listeAcc.add(a);
+
+		Sytem.out.println(getNom()+" ramasse "+a.getNom());
+
+	}
+
+	public void rencontrerVoisins(){
+	/* Pour chaque voisin de l'avatar, si le voisin est un accessoire, alors l'avatar le ramasse; si le voisin est une créature, alors l'avatar la rencontre; si le voisin est un avatar, alors l'avatar le salue. */
+
+		ArrayList<Item> listeVoisins = monde.getVoisins(this);
+
+		for (Item i : listeVoisins){
+
+			if (i instanceof Acc){
+				ramasser(i);
+			} else if (i instanceof Creature){
+				rencontrer(i);
+			} else if (i instanceof Avatar){
+				System.out.println(getNom()+" salue "+i.getNom());
+			}
+
+		}
+
+	}
+
+	public void seDeplacer(){
+	/* Déplace l'avatar dans le monde. L'utilisateur saisi une abcisse et une ordonnée. */
+
+		int oldX = getX();
+		int oldY = getY();
+		int newX = -1;
+		int newY = -1;
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("### Deplacement de "+getNom()+" ###\n");
+
+		do{
+
+			System.out.println("Entrer une abscisse entre [0,"+(monde.getTaille()-1)+"] : \n");
+			newX = sc.nextInt();
+			System.out.println("\n");			
+		
+		} while (newX < 0 || newX >= monde.getTaille());
+
+		do{
+
+			System.out.println("Entrer une abscisse entre [0,"+(monde.getTaille()-1)+"] : \n");
+			newY = sc.nextInt();
+			System.out.println("\n");
+		
+		} while (newY < 0 || newY >= monde.getTaille());
+
+		setX(newX);
+		setY(newY);
+
+		System.out.println("Déplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
 
 	}
 
