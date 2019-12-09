@@ -7,7 +7,7 @@ public class Pomme extends Acc implements Mangeable {
 		rayon = (Math.random() * ((mmax - mmin) + 1)) + mmin;
 	}
 	public String toString() {
-			String s = String.format("%s No %d %.2fkg %.1fcm", getCategorie(), getNumero(), getPoids(), rayon);
+			String s = String.format("%s No %d %.2fkg %.1fcm\n", getCategorie(), getNumero(), getPoids(), rayon);
 			return s;
 	}
 }
