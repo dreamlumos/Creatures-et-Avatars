@@ -1,19 +1,19 @@
 public abstract class Item{
-	
+
 	private final String nom;
 	private int x, y;
+
+	public Item(String nom){
+
+		this(nom, -1, -1);
+
+	}
 
 	public Item(String nom, int x, int y){
 
 		this.nom = nom;
 		this.x = x;
 		this.y = y;
-
-	}
-
-	public Item(String nom){
-
-		this(nom, -1, -1);
 
 	}
 
