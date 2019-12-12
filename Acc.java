@@ -3,7 +3,7 @@ public abstract class Acc extends Item {
 	private int numero;
 	private String categorie;
 
-	public Acc (String categorie) {
+	public Acc (String categorie) { 
 		this.categorie = categorie;
 	}
 

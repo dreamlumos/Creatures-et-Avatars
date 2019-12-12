@@ -1,7 +1,9 @@
 public class Creature extends Personnage {
+	
 	private Sac leSac;
 
 	public Creature() {
+		
 		super(Noms.getNom());
 
 	}
