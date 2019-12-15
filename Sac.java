@@ -1,6 +1,9 @@
 public class Sac extends Acc {
-	Acc[] tab;
-	public Sac(int n) {
+	private Acc[] tab;
+	private static int cpt = 0;
+
+	public Sac(int n, String categorie, String nom) {
+		super(categorie, nom);
 		tab = new Acc[n];
 	}
 
@@ -9,9 +12,11 @@ public class Sac extends Acc {
 	}
 
 	public void ajouter(Acc a) {
-		for (Acc i : tab) {
-			if (i == null) {
-				i = a;
+		int i;
+		for (i = 0; i < tab.length; i++) {
+			if (tab[i] == null) {
+				tab[i] = a;
+				cpt++;
 				return ;
 			}
 		}
@@ -19,18 +24,22 @@ public class Sac extends Acc {
 	}
 
 	public Acc obtenir(int i) {
-		if (tab[i] != null) {
+		if (tab[i] != null)
 					return tab[i];
-		}
 		return null;
 	}
 
 	public double getPoids() {
-		return (0.0);
+		double poids = 0;
+		for (int i = 0; i < cpt; i++)
+			poids += tab[i].getPoids();
+		return poids;
 	}
 
 	public String toString() {
-		for (Acc i : tab)
-			i.toString();
+		String s = String.format("%s No %d %.2fkg contient %d accessoires sur %d places\n", getCategorie(), getNumero(), this.getPoids(), cpt, tab.length);
+		for (int i = 0; i < cpt; i++)
+		 	s += tab[i].toString();
+		return s;
 	}
 }

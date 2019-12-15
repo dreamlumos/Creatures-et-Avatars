@@ -1,8 +1,8 @@
-import java.awt.*;
+/*import java.awt.*;
 import javax.swing.*;
 
 public class TestGraphisme {
-	
+
 	private static final int TAILLE_CASE = 30;
 	private static final int NB_CASES = 20;
 
@@ -30,7 +30,7 @@ public class TestGraphisme {
 			m.repaint(); //Redessine le graphique
 
 		}
-	
+
 	}
 
-}
+}*/
