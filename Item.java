@@ -46,7 +46,7 @@ public abstract class Item{
 		return Math.abs(x-item.x)+Math.abs(y-item.y);
 	}
 
-	/*public void dessiner(Graphics g, Monde m) {
+	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
 
@@ -54,6 +54,6 @@ public abstract class Item{
 
 		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
 
-	}*/
+	}
 
 }
