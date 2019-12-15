@@ -37,7 +37,6 @@ public class Monde extends JPanel{
 
 		if (item.getX() == -1 && item.getY() == -1){
 
-
 			item.setX(getPositionAlea());
 			item.setY(getPositionAlea());
 

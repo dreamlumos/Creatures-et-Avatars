@@ -4,9 +4,9 @@ public class Jeu{
 	public static void main(String[] args){
 
 	Pomme p1 = new Pomme();
-		Pomme p2 = new Pomme();
-		Sac s1 = new Sac(5);
-		s1.toString();
+	Pomme p2 = new Pomme();
+	Sac s1 = new Sac(5);
+	s1.toString();
 
 	/* Q9 : */
 
@@ -19,9 +19,10 @@ public class Jeu{
 	/* Q13 : */
 
 	Creature c2 = new Creature();
-	Avatar a1 = new Avatar("Ava1", 45);
 
 	Monde monde = new Monde(5);
+
+	Avatar a1 = new Avatar("Ava1", 45, monde);
 
 	monde.ajouterItem(c1);
 	monde.ajouterItem(c2);

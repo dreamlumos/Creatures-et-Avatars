@@ -1,7 +1,7 @@
-public class Bonbons extends Acc implements Mangeable {
+public class Bonbon extends Acc implements Mangeable {
 	private double nb;
-	public Bonbons() {
-		super("bonbons");
+	public Bonbon() {
+		super("bonbon");
 		int mmax = 7;
 		int mmin = 3;
 		rayon = (Math.random() * ((mmax - mmin) + 1)) + mmin;
