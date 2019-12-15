@@ -25,6 +25,10 @@ public class Sac extends Acc {
 		return null;
 	}
 
+	public double getPoids() {
+		return (0.0);
+	}
+
 	public String toString() {
 		for (Acc i : tab)
 			i.toString();
