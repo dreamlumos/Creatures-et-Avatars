@@ -1,3 +1,4 @@
+import java.lang.Math.*;
 public class Pomme extends Acc implements Mangeable {
 	private double rayon;
 

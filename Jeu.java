@@ -6,15 +6,19 @@ public class Jeu {
 
 	Pomme p1 = new Pomme();
 	Pomme p2 = new Pomme();
+	Bonbon b1 = new Bonbon();
 	Sac s1 = new Sac(5);
 	s1.ajouter(p1);
 	s1.ajouter(p2);
-	s1.toString();
+	s1.ajouter(b1);
+	System.out.println(s1);
+	//System.out.println(p2);
+
 
 	/* Q9 : */
 
 	Creature c1 = new Creature();
-
+	
 	c1.courir();
 	c1.manger();
 	c1.courir();
@@ -34,5 +38,4 @@ public class Jeu {
 	monde.afficher();
 
 	}
-
 }

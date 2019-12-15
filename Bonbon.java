@@ -1,3 +1,4 @@
+import java.lang.Math.*;
 public class Bonbon extends Acc implements Mangeable {
 
 	private double nb; //TO CHANGE
@@ -12,10 +13,8 @@ public class Bonbon extends Acc implements Mangeable {
 			return super.toString();
 	}
 
-	public double getPoids(){
-
-		//TO DO
-		return 0.0;
-
+	public double getPoids() {
+		double poids = (4.0 / 3000.0) * Math.PI * Math.pow(nb, 3);
+		return (poids);
 	}
 }

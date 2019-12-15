@@ -13,11 +13,9 @@ public abstract class Item{
 	}
 
 	public Item(String nom, int x, int y){
-
 		this.nom = nom;
 		this.x = x;
 		this.y = y;
-
 	}
 
 	public int getX(){
@@ -48,14 +46,14 @@ public abstract class Item{
 		return Math.abs(x-item.x)+Math.abs(y-item.y);
 	}
 
-	public void dessiner(Graphics g, Monde m) {
+	/*public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
 
 		g.setColor(new Color(0, 0, 255)); //Couleur courante devient bleu
 
-		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein 
+		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
 
-	}
+	}*/
 
 }
