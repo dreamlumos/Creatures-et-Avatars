@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.awt.*;
-import java.swing.*;
+import javax.swing.*;
 
 public class Monde extends JPanel{
 	
@@ -98,16 +98,12 @@ public class Monde extends JPanel{
 
 			case 0:
 				return nom;
-
 			case 1:
 				return " "+nom+"  ";
-
 			case 2:
 				return " "+nom+" ";
-
 			case 3:
 				return nom+" ";
-
 			case 4:
 				return nom;
 
@@ -120,12 +116,10 @@ public class Monde extends JPanel{
 	public void afficher(){
 	/* Affiche le monde avec ses items. */
 
-		String monde = "\t|";
+		String monde = "  |";
 
 		for (int i=0; i<taille; i++){
-
 			monde += "  "+i+" |";
-
 		}
 
 		monde += "\n";
@@ -139,13 +133,9 @@ public class Monde extends JPanel{
 				Item item = chercher(i, j);
 
 				if (item == null){
-
 					monde += "    |";
-
 				} else {
-
 					monde += getNomCourt(item.getNom())+"|";
-
 				}
 
 			}
@@ -163,10 +153,8 @@ public class Monde extends JPanel{
 		super.paintComponent(g); //redessine le panneau
 		
 		for (Item itemVoisin: listeItems) {
-			
 			if (itemVoisin != null) {
 				itemVoisin.dessiner(g, this);
-			
 			}
 		}
 

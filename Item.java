@@ -1,3 +1,6 @@
+import java.awt.*;
+import javax.swing.*;
+
 public abstract class Item{
 
 	private final String nom;
@@ -29,7 +32,7 @@ public abstract class Item{
 		this.x = x;
 	}
 
-	public void setY(int x){
+	public void setY(int y){
 		this.y = y;
 	}
 

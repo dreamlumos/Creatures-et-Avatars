@@ -5,6 +5,7 @@ public class Creature extends Personnage {
 	public Creature() {
 		
 		super(Noms.getNom());
+		leSac = new Sac();
 
 	}
 
@@ -25,7 +26,7 @@ public class Creature extends Personnage {
 	/* Retourne la vitesse à laquelle peut courir la créature. */
 		double vitesse = getPoids()/4 - leSac.getPoids();
 		if (vitesse < 0) {
-			return 0;
+			return 0.0;
 		}
 		return vitesse;
 	}
@@ -49,6 +50,6 @@ public class Creature extends Personnage {
 	}
 
 	public void courir(){
-		System.out.println(super.toString()+" court à vitesse "+getVitesse()+" km/h avec "+leSac.toString());
+		System.out.println(super.toString()+" court a vitesse "+String.format("%.2f", getVitesse())+" km/h avec "+leSac.toString());
 	}
 }
