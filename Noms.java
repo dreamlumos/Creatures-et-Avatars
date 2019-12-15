@@ -1,18 +1,12 @@
 public class Noms{
 	
-	private String[] tabNoms;
-	private int ptTab; //pointeur sur la prochaine case du tableau à utiliser
-	private int cptParcours; //compteur pour le numéro du parcours
+	private static String[] tabNoms = {"Bob", "Fil", "Jaz"};
+	private static int ptTab = 0; //pointeur sur la prochaine case du tableau à utiliser
+	private static int cptParcours = 0; //compteur pour le numéro du parcours
 
-	public Noms(String[] tabNoms){
+	private Noms(){}
 
-		this.tabNoms = tabNoms;
-		ptTab = 0;
-		cptParcours = 1;
-
-	}
-
-	public String getNom(){
+	public static String getNom(){
 
 		String nom = tabNoms[ptTab]+cptParcours;
 
