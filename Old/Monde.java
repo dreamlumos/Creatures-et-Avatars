@@ -1,17 +1,12 @@
 import java.util.ArrayList;
-import java.awt.*;
-import java.swing.*;
 
-public class Monde extends JPanel{
+public class Monde{
 	
 	private ArrayList<Item> listeItems;
 	private int taille;
-	private int tailleCase; //nombre de pixels d'une case dans le JPanel
 
-	public Monde(int taille, int tailleCase){
+	public Monde(int taille){
 
-		setPreferredSize(new Dimension (taille*tailleCase, taille*tailleCase));
-		this.tailleCase = tailleCase;
 		this.taille = taille;
 		listeItems = new ArrayList<Item>();
 
@@ -19,10 +14,6 @@ public class Monde extends JPanel{
 
 	public int getTaille(){
 		return taille;
-	}
-
-	public int getTailleCase(){
-		return tailleCase;
 	}
 
 	public int getPositionAlea(){
@@ -156,20 +147,6 @@ public class Monde extends JPanel{
 		}
 
 		System.out.println(monde);
-
-	}
-
-	public void paintComponent(Graphics g){
-
-		super.paintComponent(g); //redessine le panneau
-		
-		for (Item itemVoisin: listeItems) {
-			
-			if (itemVoisin != null) {
-				itemVoisin.dessiner(g, this);
-			
-			}
-		}
 
 	}
 
