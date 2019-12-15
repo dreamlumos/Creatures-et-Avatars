@@ -10,12 +10,12 @@ public class Pomme extends Acc implements Mangeable {
 	}
 
 	public String toString() {
-		String s = super.toString()+String.format("%.1fcm\n", rayon);
+		String s = super.toString() + String.format("%.1fcm\n", rayon);
 		return s;
 	}
 
-	public double getPoids() { 
-		return (4.0/3000)*Math.PI*Math.pow(rayon, 3);
+	public double getPoids() {
+		return (4.0/3000) * Math.PI * Math.pow(rayon, 3);
 	}
 
 }
