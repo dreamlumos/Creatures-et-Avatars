@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.*;
 import javax.swing.*;
+
 public class Avatar extends Personnage {
 
 	private ArrayList<Creature> listeAmis;
@@ -110,7 +111,6 @@ public class Avatar extends Personnage {
 	/* Supprime l'accessoire du monde et le met dans la liste d'accessoires de l'avatar. */
 
 		monde.supprimerItem(a);
-
 		listeAcc.add(a);
 
 		System.out.println(getNom()+" ramasse "+a.getNom());
@@ -156,14 +156,17 @@ public class Avatar extends Personnage {
 
 		setX(newX);
 		setY(newY);
-
-		System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
+		//System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
+	
 	}
 
 	public void deplacementAuto(){
+	/* L'avatar bouge automatiquement d'une case dans une direction aléatoire. Le monde est torique. */
 
+		int oldX = getX();
+		int oldY = getY();
 		int mmax = 1;
-		int mmin = -1;
+		int mmin = -1;		
 		int newX = super.getX() + (int)(Math.random() * ((mmax - mmin) + 1)) + mmin;
 		int newY = super.getY() + (int)(Math.random() * ((mmax - mmin) + 1)) + mmin;
 
@@ -175,11 +178,10 @@ public class Avatar extends Personnage {
 			newY = 0;
 		if(newY < 0)
 			newY = monde.getTailleCase() -1;
-		if (newY < 0 || newY >= monde.getTailleCase() || newX < 0 || newX >= monde.getTailleCase())
-		System.out.println(newX+" "+newY);
-
+		
 		setX(newX);
 		setY(newY);
+		System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
 
 	}
 
@@ -188,7 +190,6 @@ public class Avatar extends Personnage {
 		int tc = m.getTailleCase();
 
 		g.setColor(new Color(0, 0, 255)); //Couleur courante devient bleu
-
 		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
 
 	}

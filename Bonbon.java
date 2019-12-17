@@ -1,6 +1,6 @@
-import java.lang.Math.*;
 import java.awt.*;
 import javax.swing.*;
+
 public class Bonbon extends Acc implements Mangeable {
 
 	private int couleur;
@@ -51,9 +51,8 @@ public class Bonbon extends Acc implements Mangeable {
 
 		int tc = m.getTailleCase();
 
-		g.setColor(new Color(227, 66, 245)); //Couleur courante devient bleu
-
-		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+		g.setColor(new Color(227, 66, 245)); 
+		g.fillOval(getX()*tc, getY()*tc, tc, tc); 
 
 	}
 }

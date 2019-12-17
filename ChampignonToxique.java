@@ -1,6 +1,6 @@
-import java.lang.Math.*;
 import java.awt.*;
 import javax.swing.*;
+
 public class ChampignonToxique extends Champignon implements Mangeable{
 	private double effect;
 
@@ -29,9 +29,8 @@ public class ChampignonToxique extends Champignon implements Mangeable{
 
 		int tc = m.getTailleCase();
 
-		g.setColor(new Color(37, 191, 34)); //Couleur courante devient bleu
-
-		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+		g.setColor(new Color(37, 191, 34)); 
+		g.fillRect(getX()*tc, getY()*tc, tc, tc);
 
 	}
 

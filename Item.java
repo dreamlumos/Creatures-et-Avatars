@@ -6,10 +6,8 @@ public abstract class Item{
 	private final String nom;
 	private int x, y;
 
-	public Item(String nom){
-
+	public Item(String nom){ //position aléatoire
 		this(nom, -1, -1);
-
 	}
 
 	public Item(String nom, int x, int y){
