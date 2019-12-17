@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.awt.*;
+import javax.swing.*;
 public class Avatar extends Personnage {
 
 	private ArrayList<Creature> listeAmis;
@@ -132,7 +133,7 @@ public class Avatar extends Personnage {
 
 	public void seDeplacer(){
 	/* Déplace l'avatar dans le monde. L'utilisateur saisi une abcisse et une ordonnée. */
-		
+
 		int oldX = getX();
 		int oldY = getY();
 		int newX = -1;
@@ -140,22 +141,32 @@ public class Avatar extends Personnage {
 
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("### Deplacement de "+getNom()+" ###\n");
-		
+
 		do{
 			System.out.println("Entrer une abcisse entre [0,"+(monde.getTaille()-1)+"] : \n");
 			newX = scanner.nextInt();
 			System.out.println("\n");
 		} while (newX < 0 || newX >= monde.getTaille());
-		
+
 		do{
 			System.out.println("Entrer une ordonnee entre [0,"+(monde.getTaille()-1)+"] : \n");
 			newY = scanner.nextInt();
 			System.out.println("\n");
 		} while (newY < 0 || newY >= monde.getTaille());
-		
+
 		setX(newX);
 		setY(newY);
-		
+
 		System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
+	}
+
+	public void dessiner(Graphics g, Monde m) {
+
+		int tc = m.getTailleCase();
+
+		g.setColor(new Color(0, 0, 255)); //Couleur courante devient bleu
+
+		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+
 	}
 }

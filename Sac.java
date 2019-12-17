@@ -1,3 +1,5 @@
+import java.awt.*;
+import javax.swing.*;
 public class Sac extends Acc {
 	private Acc[] tab;
 	public Sac(int n) {
@@ -66,5 +68,15 @@ public class Sac extends Acc {
 			s += a.toString();
 		}
 		return s;
+	}
+
+	public void dessiner(Graphics g, Monde m) {
+
+		int tc = m.getTailleCase();
+
+		g.setColor(new Color(250, 179, 0)); //Couleur courante devient bleu
+
+		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+
 	}
 }

@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Monde extends JPanel{
-	
+
 	private ArrayList<Item> listeItems;
 	private int taille;
 	private int tailleCase; //nombre de pixels d'une case dans le JPanel
@@ -151,7 +151,7 @@ public class Monde extends JPanel{
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g); //redessine le panneau
-		
+
 		for (Item itemVoisin: listeItems) {
 			if (itemVoisin != null) {
 				itemVoisin.dessiner(g, this);
