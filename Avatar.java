@@ -160,6 +160,29 @@ public class Avatar extends Personnage {
 		System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
 	}
 
+	public void deplacementAuto(){
+
+		int mmax = 1;
+		int mmin = -1;
+		int newX = super.getX() + (int)(Math.random() * ((mmax - mmin) + 1)) + mmin;
+		int newY = super.getY() + (int)(Math.random() * ((mmax - mmin) + 1)) + mmin;
+
+		if(newX > monde.getTailleCase() - 1)
+			newX = 0;
+		if(newX < 0)
+			newX = monde.getTailleCase() -1;
+		if(newY > monde.getTailleCase() - 1)
+			newY = 0;
+		if(newY < 0)
+			newY = monde.getTailleCase() -1;
+		if (newY < 0 || newY >= monde.getTailleCase() || newX < 0 || newX >= monde.getTailleCase())
+		System.out.println(newX+" "+newY);
+
+		setX(newX);
+		setY(newY);
+
+	}
+
 	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();

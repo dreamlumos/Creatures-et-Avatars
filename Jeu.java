@@ -30,6 +30,13 @@ public class Jeu {
 		ChampignonBonus cb1 = new ChampignonBonus();
 		Creature c1 = new Creature();		
 
+		m.ajouterItem(p1);
+		m.ajouterItem(b1);
+		m.ajouterItem(s1);
+		m.ajouterItem(ct1);
+		m.ajouterItem(cb1);
+		m.ajouterItem(c1);
+
 		int nbJoueurs;
 		String[] tabNoms = new String[4];
 		Avatar[] tabAvatars = new Avatar[4];
@@ -41,26 +48,27 @@ public class Jeu {
 		do{
 			System.out.println("Entrez le nombre de joueurs (1-4) : \n");
 			nbJoueurs = scanner.nextInt();
-		} while (newX < 1 || newX > 4);
+		} while (nbJoueurs < 1 || nbJoueurs > 4);
 
 
 		for (int i = 0; i < nbJoueurs; i++){
 
 			System.out.println("Nom du joueur "+i+" : \n");
-			nom[i] = scanner.nextLine();
-			tabAvatars[i] = new Avatar(nom[i]); 
+			tabNoms[i] = scanner.next();
+			tabAvatars[i] = new Avatar(tabNoms[i], m); 
 
 		}
 
 		// Avatar jake = new Avatar("Jake", 79.5, m); //ajoute Jake dans le monde
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10000; i++) {
 
-			for (Avatar avatar : tabAvatars) {
+			for (int j = 0; j < nbJoueurs; j++) {
 
-			Thread.sleep(1000); //Ralenti l'affichage
-			jake.seDeplacer();
-			m.repaint(); //Redessine le graphique
+				Thread.sleep(10); //Ralenti l'affichage
+				tabAvatars[j].deplacementAuto();
+				tabAvatars[j].rencontrerVoisins();
+				m.repaint(); //Redessine le graphique
 
 
 			}

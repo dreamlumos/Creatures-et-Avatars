@@ -1,4 +1,4 @@
-public abstract class Champignon extends Item {
+public abstract class Champignon extends Item implements Mangeable {
 	private static int cpt = 0;
 	private int numero;
 	private String categorie;

@@ -1,7 +1,7 @@
 import java.lang.Math.*;
 import java.awt.*;
 import javax.swing.*;
-public class ChampignonToxique extends Champignon {
+public class ChampignonToxique extends Champignon implements Mangeable{
 	private double effect;
 
 	public ChampignonToxique() {
@@ -18,6 +18,11 @@ public class ChampignonToxique extends Champignon {
 
 	public double getChange() {
 		return effect;
+	}
+
+	public double getPoids() {
+		double poids = (4.0 / 3000.0) * Math.PI * Math.pow(effect, 3);
+		return (poids);
 	}
 
 	public void dessiner(Graphics g, Monde m) {
