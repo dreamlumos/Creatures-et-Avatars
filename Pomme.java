@@ -1,3 +1,5 @@
+import java.awt.*;
+import javax.swing.*;
 import java.lang.Math.*;
 public class Pomme extends Acc implements Mangeable {
 	private double rayon;
@@ -16,6 +18,16 @@ public class Pomme extends Acc implements Mangeable {
 
 	public double getPoids() {
 		return (4.0/3000) * Math.PI * Math.pow(rayon, 3);
+	}
+
+	public void dessiner(Graphics g, Monde m) {
+
+		int tc = m.getTailleCase();
+
+		g.setColor(new Color(133, 17, 17)); //Couleur courante devient bleu
+
+		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+
 	}
 
 }

@@ -1,12 +1,12 @@
+import java.awt.*;
+import javax.swing.*;
 public class Creature extends Personnage {
-	
+
 	private Sac leSac;
 
 	public Creature() {
-		
 		super(Noms.getNom());
 		leSac = new Sac();
-
 	}
 
 	public Creature(double poids) {
@@ -51,5 +51,15 @@ public class Creature extends Personnage {
 
 	public void courir(){
 		System.out.println(super.toString()+" court a vitesse "+String.format("%.2f", getVitesse())+" km/h avec "+leSac.toString());
+	}
+
+	public void dessiner(Graphics g, Monde m) {
+
+		int tc = m.getTailleCase();
+
+		g.setColor(new Color(191, 154, 34)); //Couleur courante devient bleu
+
+		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+
 	}
 }

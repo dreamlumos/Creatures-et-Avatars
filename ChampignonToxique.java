@@ -1,4 +1,6 @@
 import java.lang.Math.*;
+import java.awt.*;
+import javax.swing.*;
 public class ChampignonToxique extends Champignon {
 	private double effect;
 
@@ -16,6 +18,16 @@ public class ChampignonToxique extends Champignon {
 
 	public double getChange() {
 		return effect;
+	}
+
+	public void dessiner(Graphics g, Monde m) {
+
+		int tc = m.getTailleCase();
+
+		g.setColor(new Color(37, 191, 34)); //Couleur courante devient bleu
+
+		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+
 	}
 
 }
