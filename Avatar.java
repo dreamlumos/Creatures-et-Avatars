@@ -7,8 +7,16 @@ public class Avatar extends Personnage {
 	private ArrayList<Acc> listeAcc;
 	private Monde monde;
 
-	public Avatar(String nom, double poids, Monde monde) {
+	public Avatar(String nom, double poids, Monde monde) { //position aléatoire
 		super(nom, poids);
+		listeAmis = new ArrayList<Creature>();
+		listeAcc = new ArrayList<Acc>();
+		this.monde = monde;
+		monde.ajouterItem((Item) this);
+	}
+
+	public Avatar(String nom, Monde monde) { //poids et position aléatoire
+		super(nom);
 		listeAmis = new ArrayList<Creature>();
 		listeAcc = new ArrayList<Acc>();
 		this.monde = monde;
