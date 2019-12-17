@@ -9,8 +9,14 @@ public class Creature extends Personnage {
 		leSac = new Sac();
 	}
 
+	public Creature(String nom) {
+		super(nom);
+		leSac = new Sac();
+	}
+
 	public Creature(double poids) {
 		super(Noms.getNom(), poids);
+		leSac = new Sac();
 	}
 
 	public void addAcc(Acc acc){
