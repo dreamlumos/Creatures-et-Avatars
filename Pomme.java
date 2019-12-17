@@ -1,6 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
-import java.lang.Math.*;
+import javax.imageio.ImageIO;
+import java.io.*;
+
 public class Pomme extends Acc implements Mangeable {
 	private double rayon;
 
@@ -23,10 +25,20 @@ public class Pomme extends Acc implements Mangeable {
 	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
+		File pomme;
+		Image image;
 
-		g.setColor(new Color(133, 17, 17)); //Couleur courante devient bleu
+		try {
+			pomme = new File("./images/pomme.png");
+			image = ImageIO.read(pomme);
+			g.drawImage(image, getX()*tc, getY()*tc, tc, tc, m); 
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+		}
 
-		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+		//g.setColor(new Color(133, 17, 17)); 
+		//g.fillRect(getX()*tc, getY()*tc, tc, tc); 
+
 
 	}
 
