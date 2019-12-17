@@ -1,5 +1,5 @@
 import java.lang.Math.*;
-public class ChampignonToxique extends Champignons {
+public class ChampignonToxique extends Champignon {
 	private double effect;
 
 	public ChampignonToxique() {

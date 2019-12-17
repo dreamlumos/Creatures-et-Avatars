@@ -19,21 +19,21 @@ public class Bonbon extends Acc implements Mangeable {
   	case 2:
     	c = "orange";
     	break;
-		case 3:
+	case 3:
 	    c = "jaune";
 	    break;
-		case 4:
+	case 4:
 		  c = "vert";
 		  break;
-		case 5:
+	case 5:
 	    c = "bleu claire";
 	   	break;
-		case 6:
+	case 6:
 	   	c = "bleu foncé";
 	    break;
-		case 7:
-			c = "violet";
-			break;
+	case 7:
+		c = "violet";
+		break;
   	default:
     	c = "blanc";
 		}

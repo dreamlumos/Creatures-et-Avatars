@@ -1,9 +1,9 @@
-public abstract class Champignons extends Item {
+public abstract class Champignon extends Item {
 	private static int cpt = 0;
 	private int numero;
 	private String categorie;
 
-	public Champignons (String categorie) {
+	public Champignon (String categorie) {
 		super(categorie);
 		this.categorie = categorie;
 		cpt++;
