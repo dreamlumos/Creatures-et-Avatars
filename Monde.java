@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.awt.*;
+import java.awt.Color;
 import javax.swing.*;
 
 public class Monde extends JPanel{
@@ -11,6 +12,7 @@ public class Monde extends JPanel{
 	public Monde(int taille, int tailleCase){
 
 		setPreferredSize(new Dimension (taille*tailleCase, taille*tailleCase));
+
 		this.tailleCase = tailleCase;
 		this.taille = taille;
 		listeItems = new ArrayList<Item>();
@@ -151,6 +153,15 @@ public class Monde extends JPanel{
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g); //redessine le panneau
+
+		setBackground(new Color(150, 207, 60));
+
+		for (int i = 0; i < taille; i++){
+			for (int j = 0; j < taille; j++){
+				g.setColor(new Color(255, 255, 255)); 
+				g.drawRect(i*tailleCase, j*tailleCase, tailleCase, tailleCase);
+			}
+		}		
 
 		for (Item itemVoisin: listeItems) {
 			if (itemVoisin != null) {

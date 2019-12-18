@@ -3,7 +3,7 @@ import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.io.*;
 
-public class Arbre extends Item {
+public class Arbre extends Plante {
 	
 	private int nbFeuilles;
 
@@ -19,19 +19,18 @@ public class Arbre extends Item {
 	public void dessiner(Graphics g, Monde m){
 
 		int tc = m.getTailleCase();
-		/*File arbre;
+		int a = tc/2; //ajustement
+
+		File arbre;
 		Image image;
 
 		try {
 			arbre = new File("./images/arbre.png");
 			image = ImageIO.read(arbre);
-			g.drawImage(image, getX()*tc, getY()*tc, tc, tc, m); 
+			g.drawImage(image, getX()*tc, getY()*tc-a, tc+a, tc+a, m); 
 		} catch (IOException e){
 			System.out.println(e.getMessage());
-		}*/
-
-		g.setColor(new Color(87, 161, 18)); 
-		g.fillRect(getX()*tc, getY()*tc, tc, tc);
+		}
 
 	}
 
