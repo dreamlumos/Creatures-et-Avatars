@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.*;
 
 public class Avatar extends Personnage {
 
@@ -170,27 +172,35 @@ public class Avatar extends Personnage {
 		int newX = super.getX() + (int)(Math.random() * ((mmax - mmin) + 1)) + mmin;
 		int newY = super.getY() + (int)(Math.random() * ((mmax - mmin) + 1)) + mmin;
 
-		if(newX > monde.getTailleCase() - 1)
+		if(newX > monde.getTaille() - 1)
 			newX = 0;
 		if(newX < 0)
-			newX = monde.getTailleCase() -1;
-		if(newY > monde.getTailleCase() - 1)
+			newX = monde.getTaille() -1;
+		if(newY > monde.getTaille() - 1)
 			newY = 0;
 		if(newY < 0)
-			newY = monde.getTailleCase() -1;
+			newY = monde.getTaille() -1;
 		
 		setX(newX);
 		setY(newY);
-		System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
+		//System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
 
 	}
 
 	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
+		int a = tc/2; //ajustement
+		File petitmonstre;
+		Image image;
 
-		g.setColor(new Color(0, 0, 255)); //Couleur courante devient bleu
-		g.fillRect(getX()*tc, getY()*tc, tc, tc); //Carré plein
+		try {
+			petitmonstre = new File("./images/petitmonstre.png");
+			image = ImageIO.read(petitmonstre);
+			g.drawImage(image, getX()*tc-a, getY()*tc-a, tc+a, tc+a, m); 
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+		}
 
 	}
 }

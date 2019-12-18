@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.*;
 
 public class Bonbon extends Acc implements Mangeable {
 
@@ -15,29 +17,29 @@ public class Bonbon extends Acc implements Mangeable {
 	public String toString() {
 		String c;
 		switch(couleur) {
-  	case 1:
-    	c = "rouge";
-    	break;
-  	case 2:
-    	c = "orange";
-    	break;
-	case 3:
-	    c = "jaune";
-	    break;
-	case 4:
-		  c = "vert";
-		  break;
-	case 5:
-	    c = "bleu claire";
-	   	break;
-	case 6:
-	   	c = "bleu foncé";
-	    break;
-	case 7:
-		c = "violet";
-		break;
-  	default:
-    	c = "blanc";
+		  	case 1:
+		    	c = "rouge";
+		    	break;
+		  	case 2:
+		    	c = "orange";
+		    	break;
+			case 3:
+			    c = "jaune";
+			    break;
+			case 4:
+				  c = "vert";
+				  break;
+			case 5:
+			    c = "bleu claire";
+			   	break;
+			case 6:
+			   	c = "bleu foncé";
+			    break;
+			case 7:
+				c = "violet";
+				break;
+		  	default:
+		    	c = "blanc";
 		}
 		String s = super.toString() + String.format(" couleur: %s", c);
 		return s;
@@ -50,9 +52,18 @@ public class Bonbon extends Acc implements Mangeable {
 	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
+		int a = tc/2; //ajustement
 
-		g.setColor(new Color(227, 66, 245)); 
-		g.fillOval(getX()*tc, getY()*tc, tc, tc); 
+		File bonbon;
+		Image image;
+
+		try {
+			bonbon = new File("./images/bonbon.png");
+			image = ImageIO.read(bonbon);
+			g.drawImage(image, getX()*tc+a, getY()*tc+a, tc-a, tc-a, m); 
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+		} 
 
 	}
 }

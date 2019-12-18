@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.*;
 
 public class Carotte extends Acc implements Mangeable {
 
@@ -23,9 +25,18 @@ public class Carotte extends Acc implements Mangeable {
 	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
+		int tc2 = tc/2;
 
-		g.setColor(new Color(227, 135, 16)); 
-		g.fillOval(getX()*tc, getY()*tc, tc/5, tc); 
+		File carotte;
+		Image image;
+
+		try {
+			carotte = new File("./images/carotte.png");
+			image = ImageIO.read(carotte);
+			g.drawImage(image, getX()*tc, getY()*tc+tc2, tc, tc-tc2, m); 
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+		}
 
 	}
 

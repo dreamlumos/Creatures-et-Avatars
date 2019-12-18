@@ -1,6 +1,3 @@
-import java.awt.*;
-import javax.swing.*;
-
 public class ChampignonToxique extends Champignon implements Mangeable{
 	private double effect;
 
@@ -23,15 +20,6 @@ public class ChampignonToxique extends Champignon implements Mangeable{
 	public double getPoids() {
 		double poids = (4.0 / 3000.0) * Math.PI * Math.pow(effect, 3);
 		return (poids);
-	}
-
-	public void dessiner(Graphics g, Monde m) {
-
-		int tc = m.getTailleCase();
-
-		g.setColor(new Color(37, 191, 34)); 
-		g.fillRect(getX()*tc, getY()*tc, tc, tc);
-
 	}
 
 }

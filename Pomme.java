@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.*;
 
 public class Pomme extends Acc implements Mangeable {
+
 	private double rayon;
 
 	public Pomme() {
@@ -31,14 +32,10 @@ public class Pomme extends Acc implements Mangeable {
 		try {
 			pomme = new File("./images/pomme.png");
 			image = ImageIO.read(pomme);
-			g.drawImage(image, getX()*tc, getY()*tc, tc, tc, m); 
+			g.drawImage(image, getX()*tc, getY()*tc, tc/2, tc/2, m); 
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		}
-
-		//g.setColor(new Color(133, 17, 17)); 
-		//g.fillRect(getX()*tc, getY()*tc, tc, tc); 
-
 
 	}
 

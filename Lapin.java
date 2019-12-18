@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.*;
 
 public class Lapin extends Creature {
 	
@@ -11,8 +13,16 @@ public class Lapin extends Creature {
 
 		int tc = m.getTailleCase();
 
-		g.setColor(new Color(173, 170, 153)); 
-		g.fillRect(getX()*tc, getY()*tc, tc, tc); 
+		File lapin;
+		Image image;
+
+		try {
+			lapin = new File("./images/lapin.png");
+			image = ImageIO.read(lapin);
+			g.drawImage(image, getX()*tc, getY()*tc, tc, tc, m); 
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+		}
 
 	}
 
