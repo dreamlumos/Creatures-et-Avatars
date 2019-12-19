@@ -14,7 +14,7 @@ public class Jeu {
 	System.out.println(s1);
 
 
-	// /* Q9 : */
+	/* Q9 : */
 	
 	Creature c1 = new Creature();
 
