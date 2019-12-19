@@ -154,7 +154,8 @@ public class Monde extends JPanel{
 
 		super.paintComponent(g); //redessine le panneau
 
-		setBackground(new Color(150, 207, 60));
+		// setBackground(new Color(150, 207, 60));
+		setBackground(new Color(177, 217, 147));
 
 		for (int i = 0; i < taille; i++){
 			for (int j = 0; j < taille; j++){

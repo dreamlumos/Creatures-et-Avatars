@@ -10,7 +10,7 @@ public class Creature extends Personnage implements Sieste {
 	Plus elle a d'énergie, plus vite elle pourra courir.
 */
 
-	private Sac leSac;
+	protected Sac leSac;
 	private int energie; 
 	private Monde monde;
 
@@ -29,6 +29,7 @@ public class Creature extends Personnage implements Sieste {
 	public Creature(String nom, Monde monde) { //poids et position aléatoires
 		super(nom);
 		leSac = new Sac();
+		energie = 10;
 		this.monde = monde;
 		monde.ajouterItem((Item) this);
 	}
@@ -102,7 +103,7 @@ public class Creature extends Personnage implements Sieste {
 			
 			setX(newX);
 			setY(newY);
-			//System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
+			System.out.println("Deplacement de "+getNom()+" de ("+oldX+","+oldY+") vers ("+newX+","+newY+") \n");
 
 		}
 

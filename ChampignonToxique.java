@@ -1,4 +1,4 @@
-public class ChampignonToxique extends Champignon implements Mangeable{
+public class ChampignonToxique extends Champignon {
 	private double effect;
 
 	public ChampignonToxique() {

@@ -82,7 +82,7 @@ public class Jeu {
 			for (int j = 0; j < nbJoueurs; j++) {
 
 				Thread.sleep(1000); 
-				System.out.println("\n###Tour "+i+", joueur : "+tabAvatars[j].getNom()+"###");
+				System.out.println("\n ###Tour "+i+", joueur : "+tabAvatars[j].getNom()+" ###");
 				
 				int choix = 0;
 				while (choix < 1 || choix > 2){

@@ -78,6 +78,8 @@ public class JeuAuto {
 
 		}
 
+		m.repaint();
+
 		/* Tours de jeu. */
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < nbJoueurs; j++) {
@@ -88,8 +90,10 @@ public class JeuAuto {
 				m.repaint();
 
 			}
-			for (Creature creature : tabCreatures){
+			for (Creature creature : tabCreatures){ 
+				System.out.println("test crea");
 				creature.deplacementAuto();
+				m.repaint();
 			}
 		}
 

@@ -12,7 +12,7 @@ public class Rollers extends Acc implements Portable {
 
 	public double getPoids(){
 		/*2-5kg*/
-		return 0.0;
+		return 2.0;
 	}
 
 	public double changerVitesse(){
