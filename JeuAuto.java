@@ -4,8 +4,9 @@ import javax.swing.*;
 
 public class JeuAuto {
 
-	private static final int TAILLE_CASE = 30;
-	private static final int NB_CASES = 20;
+	private static final int TAILLE_CASE = 80;
+	private static final int NB_CASES = 10;
+	private static final int NB_CREATURES = 8;
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -22,7 +23,14 @@ public class JeuAuto {
 		f.pack(); //Adaptation de la fenêtre au panneau
 		f.setVisible(true);
 
+		Creature[] tabCreatures = new Creature[NB_CREATURES];
+		for (int i = 0; i < NB_CREATURES-1; i++){
+			tabCreatures[i] = new Creature(m);
+		}
 
+		tabCreatures[NB_CREATURES-1] = new Lapin(m);
+
+		Arbre a1 = new Arbre();
 		Pomme p1 = new Pomme();
 		Pomme p2 = new Pomme();
 		Pomme p3 = new Pomme();
@@ -34,11 +42,8 @@ public class JeuAuto {
 		Sac s1 = new Sac(5);
 		ChampignonToxique ct1 = new ChampignonToxique();
 		ChampignonBonus cb1 = new ChampignonBonus();
-		Creature crea1 = new Creature();
-		Creature crea2 = new Lapin();
-		Creature crea3 = new Creature();
-		Creature crea4 = new Creature();				
 
+		m.ajouterItem(a1);
 		m.ajouterItem(p1);
 		m.ajouterItem(c1);
 		m.ajouterItem(b1);
@@ -50,10 +55,6 @@ public class JeuAuto {
 		m.ajouterItem(s1);
 		m.ajouterItem(ct1);
 		m.ajouterItem(cb1);
-		m.ajouterItem(crea1);
-		m.ajouterItem(crea2);
-		m.ajouterItem(crea3);
-		m.ajouterItem(crea4);
 
 		int nbJoueurs;
 		String[] tabNoms = new String[4];
@@ -68,7 +69,7 @@ public class JeuAuto {
 			nbJoueurs = scanner.nextInt();
 		} while (nbJoueurs < 1 || nbJoueurs > 4);
 
-		/* Noms des joueurs. */
+		/* Noms des joueurs et création des avatars. */
 		for (int i = 0; i < nbJoueurs; i++){
 
 			System.out.println("Nom du joueur "+i+" : \n");
@@ -77,38 +78,41 @@ public class JeuAuto {
 
 		}
 
-		/* Tours de boucle. */
-		for (int i = 0; i < 1000; i++) {
+		/* Tours de jeu. */
+		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < nbJoueurs; j++) {
 
-				Thread.sleep(10); //Ralenti l'affichage
+				Thread.sleep(500);
 				tabAvatars[j].deplacementAuto();
 				tabAvatars[j].rencontrerVoisins();
-				m.repaint(); //Redessine le graphique
+				m.repaint();
 
+			}
+			for (Creature creature : tabCreatures){
+				creature.deplacementAuto();
 			}
 		}
 
 		double distanceMax = 0.0;
 		Avatar gagnant = null;
+
 		/* Course et calcule du gagnant. */
 		for (int i = 0; i < nbJoueurs; i++){
-
 			double distance = tabAvatars[i].course();
-
 			if (distance > distanceMax){
 				distanceMax = distance;
 				gagnant = tabAvatars[i]; 
 			}
-
 			System.out.println("Distance parcourue par les amis de "+tabAvatars[i].getNom()+" : "+distance);
-
 		}
+
 		if (gagnant != null){
 			System.out.println("Le gagnant est "+gagnant.getNom()+" !");
 		} else {
 			System.out.println("Il n'y a pas de gagnant.");
 		}
+
+		System.exit(0);
 
 	}
 

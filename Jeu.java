@@ -4,8 +4,9 @@ import javax.swing.*;
 
 public class Jeu {
 
-	private static final int TAILLE_CASE = 30;
-	private static final int NB_CASES = 20;
+	private static final int TAILLE_CASE = 80;
+	private static final int NB_CASES = 10;
+	private static final int NB_CREATURES = 8;
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -22,20 +23,36 @@ public class Jeu {
 		f.pack(); //Adaptation de la fenêtre au panneau
 		f.setVisible(true);
 
+		Creature[] tabCreatures = new Creature[NB_CREATURES];
+		for (int i = 0; i < NB_CREATURES-1; i++){
+			tabCreatures[i] = new Creature(m);
+		}
 
+		tabCreatures[NB_CREATURES-1] = new Lapin(m);
+
+		Arbre a1 = new Arbre();
 		Pomme p1 = new Pomme();
+		Pomme p2 = new Pomme();
+		Carotte c1 = new Carotte();
+		Carotte c2 = new Carotte();
 		Bonbon b1 = new Bonbon();
+		Bonbon b2 = new Bonbon();
+		Rollers r1 = new Rollers();
 		Sac s1 = new Sac(5);
 		ChampignonToxique ct1 = new ChampignonToxique();
 		ChampignonBonus cb1 = new ChampignonBonus();
-		Creature c1 = new Creature();		
-
+		
+		m.ajouterItem(a1);
 		m.ajouterItem(p1);
+		m.ajouterItem(p2);
+		m.ajouterItem(c1);
+		m.ajouterItem(c2);
 		m.ajouterItem(b1);
+		m.ajouterItem(b2);
+		m.ajouterItem(r1);
 		m.ajouterItem(s1);
 		m.ajouterItem(ct1);
 		m.ajouterItem(cb1);
-		m.ajouterItem(c1);
 
 		int nbJoueurs;
 		String[] tabNoms = new String[4];
@@ -44,37 +61,73 @@ public class Jeu {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("### Bienvenue à Créatures et Avatars ! ###\n  ");
 
-
+		/* Choix du nombre de joueurs. */
 		do{
 			System.out.println("Entrez le nombre de joueurs (1-4) : \n");
 			nbJoueurs = scanner.nextInt();
 		} while (nbJoueurs < 1 || nbJoueurs > 4);
 
-
+		/* Noms des joueurs et création des avatars. */
 		for (int i = 0; i < nbJoueurs; i++){
-
 			System.out.println("Nom du joueur "+i+" : \n");
 			tabNoms[i] = scanner.next();
 			tabAvatars[i] = new Avatar(tabNoms[i], m); 
-
 		}
 
-		// Avatar jake = new Avatar("Jake", 79.5, m); //ajoute Jake dans le monde
+		m.repaint(); 
 
-		for (int i = 0; i < 10000; i++) {
+		/* Tours de jeu. */
+		for (int i = 0; i < 5; i++) {
 
 			for (int j = 0; j < nbJoueurs; j++) {
 
-				Thread.sleep(10); //Ralenti l'affichage
-				tabAvatars[j].deplacementAuto();
-				tabAvatars[j].rencontrerVoisins();
-				m.repaint(); //Redessine le graphique
+				Thread.sleep(1000); 
+				System.out.println("\n###Tour "+i+", joueur : "+tabAvatars[j].getNom()+"###");
+				
+				int choix = 0;
+				while (choix < 1 || choix > 2){
+					System.out.print("Que voulez vous faire ? 1. Me déplacer, 2. Rencontrer mes voisins\nMon choix : ");
+					choix = scanner.nextInt();
+				}
+				switch (choix) {
+					case 1:
+						tabAvatars[j].seDeplacer();
+						break;
+					case 2:
+						tabAvatars[j].rencontrerVoisins();
+				}
 
+				m.repaint(); 
 
 			}
 
+			for (Creature creature : tabCreatures){
+				creature.deplacementAuto();
+				m.repaint(); 
+			}
 
 		}
+
+		double distanceMax = 0.0;
+		Avatar gagnant = null;
+		
+		/* Course et calcule du gagnant. */
+		for (int i = 0; i < nbJoueurs; i++){
+			double distance = tabAvatars[i].course();
+			if (distance > distanceMax){
+				distanceMax = distance;
+				gagnant = tabAvatars[i]; 
+			}
+			System.out.println("Distance parcourue par les amis de "+tabAvatars[i].getNom()+" : "+distance);
+		}
+
+		if (gagnant != null){
+			System.out.println("Le gagnant est "+gagnant.getNom()+" !");
+		} else {
+			System.out.println("Il n'y a pas de gagnant.");
+		}
+
+		System.exit(0);
 
 	}
 
