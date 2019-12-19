@@ -3,7 +3,7 @@ import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.io.*;
 
-public abstract class Champignon extends Item implements Mangeable {
+public abstract class Champignon extends Acc implements Mangeable {
 	private static int cpt = 0;
 	private int numero;
 	private String categorie;
@@ -32,6 +32,7 @@ public abstract class Champignon extends Item implements Mangeable {
 	public void dessiner(Graphics g, Monde m) {
 
 		int tc = m.getTailleCase();
+		int a = tc/2; //ajustement
 
 		File champignon;
 		Image image;
@@ -39,7 +40,7 @@ public abstract class Champignon extends Item implements Mangeable {
 		try {
 			champignon = new File("./images/champignon.png");
 			image = ImageIO.read(champignon);
-			g.drawImage(image, getX()*tc, getY()*tc, tc, tc, m); 
+			g.drawImage(image, getX()*tc, getY()*tc+a, tc, tc-a, m); 
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		} 

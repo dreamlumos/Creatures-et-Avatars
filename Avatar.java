@@ -115,7 +115,7 @@ public class Avatar extends Personnage {
 		monde.supprimerItem(a);
 		listeAcc.add(a);
 
-		System.out.println(getNom()+" ramasse "+a.getNom());
+		System.out.println(getNom()+" ramasse "+a.getNom()+".");
 
 	}
 
@@ -128,7 +128,7 @@ public class Avatar extends Personnage {
 			} else if (i instanceof Creature){
 				rencontrer((Creature) i);
 			} else if (i instanceof Avatar){
-				System.out.println(getNom()+" salue "+i.getNom());
+				System.out.println(getNom()+" salue "+i.getNom()+".");
 			}
 		}
 	}
@@ -142,16 +142,15 @@ public class Avatar extends Personnage {
 		int newY = -1;
 
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("### Deplacement de "+getNom()+" ###\n");
+		System.out.println("### Deplacement de "+getNom()+" ###");
 
 		do{
-			System.out.println("Entrer une abcisse entre [0,"+(monde.getTaille()-1)+"] : \n");
+			System.out.println("Entrer une abcisse entre [0,"+(monde.getTaille()-1)+"] : ");
 			newX = scanner.nextInt();
-			System.out.println("\n");
 		} while (newX < 0 || newX >= monde.getTaille());
 
 		do{
-			System.out.println("Entrer une ordonnee entre [0,"+(monde.getTaille()-1)+"] : \n");
+			System.out.println("Entrer une ordonnee entre [0,"+(monde.getTaille()-1)+"] : ");
 			newY = scanner.nextInt();
 			System.out.println("\n");
 		} while (newY < 0 || newY >= monde.getTaille());

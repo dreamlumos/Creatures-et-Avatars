@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.*;
 
 public class Rollers extends Acc implements Portable {
+/* Pour l'instant les rollers sont juste encombrants. */
 
 	public Rollers(){
 		super("rollers");
@@ -33,9 +34,6 @@ public class Rollers extends Acc implements Portable {
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		}
-
-		/*g.setColor(new Color(55, 59, 79)); 
-		g.fillOval(getX()*tc, getY()*tc, tc, tc);*/ 
 
 	}
 

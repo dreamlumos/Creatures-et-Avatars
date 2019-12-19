@@ -5,8 +5,8 @@ import java.io.*;
 
 public class Lapin extends Creature {
 	
-	public Lapin(){
-		super("Lapin"+Noms.getNom());
+	public Lapin(Monde monde){
+		super("Lapin"+Noms.getNom(), monde);
 	}
 
 	public void dessiner(Graphics g, Monde m){
